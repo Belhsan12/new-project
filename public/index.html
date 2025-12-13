@@ -7,11 +7,24 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Caisse Ticket - Your ultimate Point of Sale and Inventory Management solution."
+      content="VideoHub - Your destination for adult videos."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Caisse Ticket | POS & Inventory</title>
+    <title>Videos</title>
+    <!-- CRITICAL: Inline script to prevent FOUC (Flash Of Unstyled Content) -->
+    <!-- This script runs before React renders to apply the dark class if preferred -->
+    <script>
+      (function() {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const currentTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
