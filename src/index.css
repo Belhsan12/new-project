@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar for better UX in overflow-y-auto elements */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* gray-300 */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* gray-400 */
+}
+
+/* Keyframe for modal/notification entrance animation */
+@keyframes scale-in {
+  from { transform: scale(0.9) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out forwards;
+}
+
+/* Keyframe for mobile menu slide down */
+@keyframes slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.2s ease-out forwards;
+}
+
+/* --- Print Styles for ReceiptModal --- */
+@media print {
+  /* Hide EVERYTHING by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Make the receipt modal and its content visible */
+  .fixed.inset-0.bg-gray-900.bg-opacity-75, /* The modal overlay itself */
+  .receipt-print-area, /* The actual receipt content container */
+  .receipt-print-area * /* All children of receipt-print-area */
+  {
+    visibility: visible !important;
+  }
+
+  /* Override modal overlay styles for print */
+  .fixed.inset-0.bg-gray-900.bg-opacity-75 {
+    position: static !important; /* Remove fixed positioning */
+    background-color: transparent !important; /* No dark overlay on print */
+    display: block !important; /* Ensure it's a block element */
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Style the receipt content for print */
+  .receipt-print-area {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important; /* Take full width of the print page */
+    max-width: 80mm !important; /* Common receipt width, adjust as needed */
+    height: auto !important; /* Allow content to dictate height */
+    max-height: none !important; /* Remove max-height constraints */
+    overflow: visible !important; /* Ensure all content is visible, no scrollbars */
+    box-shadow: none !important; /* Remove shadows */
+    border: none !important; /* Remove borders */
+    padding: 10mm !important; /* Add some internal padding for better print layout */
+    margin: 0 auto !important; /* Center the content on the page */
+    background-color: white !important; /* Ensure a white background for readability */
+    color: black !important; /* Ensure text is black for readability */
+  }
+
+  /* Hide specific interactive elements within the receipt modal during print */
+  .receipt-modal-close-button,
+  .receipt-modal-print-button {
+    display: none !important;
+  }
+}
