@@ -1,22 +1,21 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import WelcomeGymPage from './pages/WelcomeGymPage';
-import { ThemeContextProvider } from './contexts/ThemeContext';
+import WelcomePage from './pages/WelcomePage';
 
 // The root App component, providing the main layout and routing.
 // It now wraps the application with ThemeContextProvider to enable dark/light mode.
 function App() {
   return (
-    <ThemeContextProvider>
-      <div className="App dark:bg-darkBg-DEFAULT bg-white min-h-screen text-gray-900 dark:text-darkText-DEFAULT">
-        <Header />
+    <div className="App dark:bg-darkBg-darker">
+      <Header />
+      <main>
         <Routes>
-          <Route path="/" element={<WelcomeGymPage />} />
-          {/* Future routes can be added here */}
+          <Route path="/" element={<WelcomePage />} />
+          {/* Add more routes here as the application grows */}
         </Routes>
-      </div>
-    </ThemeContextProvider>
+      </main>
+    </div>
   );
 }
 

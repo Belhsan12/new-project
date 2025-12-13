@@ -9,8 +9,8 @@ test('renders Welcome to the Gym! title on the welcome page', () => {
     </Router>
   );
   // Check for the main heading on the welcome page
-  const titleElement = screen.getByText(/Welcome to the Gym!/i);
-  expect(titleElement).toBeInTheDocument();
+  const welcomeTitleElement = screen.getByText(/Welcome to the Gym!/i);
+  expect(welcomeTitleElement).toBeInTheDocument();
 
   // Optionally, check for the header title
   const headerTitleElement = screen.getByText(/GymApp/i);
