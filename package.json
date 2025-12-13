@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "my-elearning-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -41,5 +41,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.18"
   },
-  "homepage": "https://Belhsan12.github.io/new-project"
+  "homepage": "https://Belhsan12.github.io/my-elearning-app"
 }
