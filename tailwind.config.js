@@ -8,18 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Primary accent color (Pornhub-like orange)
+        // Primary accent color: Energetic blue for a gym app
         primary: {
-          DEFAULT: '#FF9900', // A vibrant orange
-          light: '#FFB84D',  // Lighter for some text/accents
-          dark: '#CC7A00',   // Darker for hover states
+          DEFAULT: '#007bff', // A strong, vibrant blue
+          light: '#66b3ff',  // Lighter for accents/hovers
+          dark: '#0056b3',   // Darker for hover states
           contrast: '#FFFFFF', // For text on primary background
         },
-        // Secondary accent, often used for links or less critical actions
+        // Secondary accent: Vibrant green for a fresh feel
         secondary: {
-          DEFAULT: '#800080', // Deep purple
-          light: '#C792DF', // Lighter purple
-          dark: '#6A006A',  // Darker purple
+          DEFAULT: '#28a745', // A vibrant green
+          light: '#6de08a', // Lighter green
+          dark: '#1e7e34',  // Darker green
           contrast: '#FFFFFF',
         },
         // Danger/Error color (e.g., remove from watchlist, age verification warnings)
@@ -31,7 +31,7 @@ module.exports = {
         },
         // Success color for notifications
         success: {
-          DEFAULT: '#48BB78', // A pleasant green
+          DEFAULT: '#48BB78', // A pleasant green (can be same as secondary for simplicity or distinct)
           dark: '#38A169',
           contrast: '#FFFFFF',
         },
@@ -50,8 +50,8 @@ module.exports = {
       // Adding some custom animations for a more dynamic feel
       keyframes: {
         glow: {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(255, 153, 0, 0.7)', borderColor: '#FF9900' },
-          '50%': { boxShadow: '0 0 15px rgba(255, 153, 0, 1)', borderColor: '#FFB84D' },
+          '0%, 100%': { boxShadow: '0 0 5px rgba(0, 123, 255, 0.7)', borderColor: '#007bff' },
+          '50%': { boxShadow: '0 0 15px rgba(0, 123, 255, 1)', borderColor: '#66b3ff' },
         },
         'pulse-fade': {
           '0%, 100%': { opacity: '1' },
