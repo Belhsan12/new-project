@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { CartProvider } from './context/CartContext'; // Import CartProvider
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      {/* Wrap the entire application with CartProvider to make cart state available globally */}
+      <CartProvider>
+        <App />
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
