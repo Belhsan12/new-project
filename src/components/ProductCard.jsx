@@ -1,7 +1,15 @@
 import React from 'react';
 import { ShoppingBag } from 'lucide-react';
+import { useCart } from '../context/CartContext'; // Import useCart hook
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart(); // Use the custom hook to get addToCart function
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    alert(`${product.name} added to cart!`); // Simple feedback
+  };
+
   return (
     <div className="group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-slate-700/50 rounded-2xl p-5 shadow-lg shadow-indigo-500/10 hover:shadow-xl hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-300 ease-in-out transform">
       <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -26,6 +34,7 @@ const ProductCard = ({ product }) => {
           ${product.price.toFixed(2)}
         </span>
         <button
+          onClick={handleAddToCart} // Attach the handler here
           className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2 rounded-xl font-semibold shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 active:scale-95"
           aria-label={`Add ${product.name} to cart`}
         >

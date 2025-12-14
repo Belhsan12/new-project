@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Package } from 'lucide-react'; // Using lucide-react for icons
+import { ShoppingCart, Package } from 'lucide-react';
+import { useCart } from '../context/CartContext'; // Import useCart hook
 
 const Navbar = () => {
+  const { getCartItemCount } = useCart(); // Use the custom hook to get cart count
+
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -20,7 +23,11 @@ const Navbar = () => {
           </Link>
           <Link to="/cart" className="relative text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200" aria-label="View shopping cart">
             <ShoppingCart className="w-6 h-6" />
-            <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse-fade">3</span> {/* Dummy cart count */}
+            {getCartItemCount() > 0 && (
+              <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse-fade">
+                {getCartItemCount()}
+              </span>
+            )} {/* Display actual cart count from context */}
           </Link>
         </div>
       </div>
