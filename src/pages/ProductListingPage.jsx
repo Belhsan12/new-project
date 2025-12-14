@@ -87,8 +87,10 @@ function ProductListingPage() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
       {/* Filters and Sorting Sidebar */}
-      <aside className="md:col-span-1 bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-md h-fit sticky top-24">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-darkText-DEFAULT">Filters</h2>
+      {/* Removed dark mode specific background class */}
+      <aside className="md:col-span-1 bg-white p-6 rounded-xl shadow-md h-fit sticky top-24">
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-2xl font-bold mb-6 text-gray-800">Filters</h2>
 
         {/* Category Filter */}
         <Select
@@ -102,7 +104,8 @@ function ProductListingPage() {
 
         {/* Price Filter */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 dark:text-darkText-DEFAULT mb-1">Price Range</label>
+          {/* Adjusted text colors for light theme consistency */}
+          <label className="block text-sm font-medium text-gray-700 mb-1">Price Range</label>
           <div className="flex space-x-2">
             <Input
               type="number"
@@ -145,14 +148,16 @@ function ProductListingPage() {
 
       {/* Product Grid */}
       <section className="md:col-span-3">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-darkText-DEFAULT">Products ({filteredAndSortedProducts.length})</h2>
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-3xl font-bold mb-6 text-gray-800">Products ({filteredAndSortedProducts.length})</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredAndSortedProducts.length > 0 ? (
             filteredAndSortedProducts.map(product => (
               <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
             ))
           ) : (
-            <p className="col-span-full text-center text-lg text-gray-600 dark:text-darkText-subtle">No products found matching your criteria.</p>
+            // Adjusted text colors for light theme consistency
+            <p className="col-span-full text-center text-lg text-gray-600">No products found matching your criteria.</p>
           )}
         </div>
       </section>

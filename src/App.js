@@ -12,7 +12,8 @@ const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-darkBg-DEFAULT text-gray-900 dark:text-darkText-DEFAULT">
+    // Removed dark mode classes to enforce a light theme throughout the application
+    <div className="min-h-screen flex flex-col bg-gray-100 text-gray-900">
       <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <Suspense fallback={<div className="text-center text-lg font-semibold py-10">Loading...</div>}>

@@ -13,20 +13,16 @@ import PropTypes from 'prop-types';
  * @param {string} [props.type='button'] - The type of the button ('button', 'submit', 'reset').
  */
 function Button({ variant = 'primary', size = 'md', className = '', disabled = false, children, onClick, type = 'button', ...props }) {
-  const baseStyles = 'font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-darkBg-DEFAULT';
+  // Removed dark mode specific focus ring offset
+  const baseStyles = 'font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100';
 
   const variantStyles = {
     primary: 'bg-primary-DEFAULT text-primary-contrast hover:bg-primary-dark focus:ring-primary-DEFAULT',
     secondary: 'bg-secondary-DEFAULT text-secondary-contrast hover:bg-secondary-dark focus:ring-secondary-DEFAULT',
     danger: 'bg-danger-DEFAULT text-danger-contrast hover:bg-red-700 focus:ring-danger-DEFAULT',
     outline: 'bg-transparent border border-primary-DEFAULT text-primary-DEFAULT hover:bg-primary-DEFAULT hover:text-primary-contrast focus:ring-primary-DEFAULT',
-    ghost: 'bg-transparent text-gray-700 dark:text-darkText-DEFAULT hover:bg-gray-200 dark:hover:bg-gray-700 focus:ring-gray-400'
-  };
-
-  const sizeStyles = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
+    // Adjusted ghost variant for light theme consistency
+    ghost: 'bg-transparent text-gray-700 hover:bg-gray-200 focus:ring-gray-400'
   };
 
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';

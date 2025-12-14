@@ -19,9 +19,11 @@ function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="bg-white dark:bg-darkBg-card p-8 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl text-center">
-        <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Your Cart is Empty</h2>
-        <p className="text-gray-600 dark:text-darkText-subtle mb-6">Looks like you haven't added anything to your cart yet.</p>
+      // Removed dark mode specific background and shadow classes
+      <div className="bg-white p-8 rounded-xl shadow-soft-xl text-center">
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Cart is Empty</h2>
+        <p className="text-gray-600 mb-6">Looks like you haven't added anything to your cart yet.</p>
         <Link to="/products">
           <Button variant="primary">Start Shopping</Button>
         </Link>
@@ -30,28 +32,32 @@ function CartPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl">
-      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-darkText-DEFAULT">Your Shopping Cart</h1>
+    // Removed dark mode specific background and shadow classes
+    <div className="bg-white p-6 rounded-xl shadow-soft-xl">
+      {/* Adjusted text colors for light theme consistency */}
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">Your Shopping Cart</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items List */}
         <div className="lg:col-span-2 space-y-4">
           {cartItems.map(item => (
-            <div key={item.id} className="flex flex-col sm:flex-row items-center bg-gray-50 dark:bg-darkBg-DEFAULT p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
+            <div key={item.id} className="flex flex-col sm:flex-row items-center bg-gray-50 p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-[1.01] border border-gray-100">
               <Link to={`/products/${item.id}`} className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 overflow-hidden rounded-md mr-4">
                 <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
               </Link>
               <div className="flex-grow text-center sm:text-left mt-3 sm:mt-0">
                 <Link to={`/products/${item.id}`}>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-darkText-DEFAULT hover:text-primary-DEFAULT dark:hover:text-primary-light transition-colors duration-200">{item.name}</h3>
+                  {/* Adjusted text colors for light theme consistency */}
+                  <h3 className="text-lg font-semibold text-gray-800 hover:text-primary-DEFAULT transition-colors duration-200">{item.name}</h3>
                 </Link>
-                <p className="text-gray-600 dark:text-darkText-subtle text-sm">{formatCurrency(item.price)} each</p>
+                <p className="text-gray-600 text-sm">{formatCurrency(item.price)} each</p>
                 <div className="flex items-center justify-center sm:justify-start mt-2 space-x-4">
                   <QuantitySelector
                     quantity={item.quantity}
                     onQuantityChange={(newQuantity) => handleUpdateQuantity(item.id, newQuantity)}
                     max={item.stock} // Limit quantity by product stock
                   />
-                  <p className="font-medium text-gray-800 dark:text-darkText-DEFAULT">Subtotal: {formatCurrency(item.price * item.quantity)}</p>
+                  {/* Adjusted text colors for light theme consistency */}
+                  <p className="font-medium text-gray-800">Subtotal: {formatCurrency(item.price * item.quantity)}</p>
                 </div>
               </div>
               <Button
@@ -71,15 +77,16 @@ function CartPage() {
         </div>
 
         {/* Order Summary */}
-        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-fit">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Order Summary</h2>
-          <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
-            <span className="text-gray-700 dark:text-darkText-DEFAULT">Subtotal:</span>
-            <span className="font-semibold text-gray-900 dark:text-darkText-DEFAULT">{formatCurrency(cartTotal)}</span>
+        <div className="lg:col-span-1 bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 h-fit">
+          {/* Adjusted text colors for light theme consistency */}
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">Order Summary</h2>
+          <div className="flex justify-between items-center py-2 border-b border-gray-200">
+            <span className="text-gray-700">Subtotal:</span>
+            <span className="font-semibold text-gray-900">{formatCurrency(cartTotal)}</span>
           </div>
           <div className="flex justify-between items-center py-2 mb-4">
-            <span className="text-lg font-bold text-gray-800 dark:text-darkText-DEFAULT">Total:</span>
-            <span className="text-lg font-bold text-primary-DEFAULT dark:text-primary-light">{formatCurrency(cartTotal)}</span>
+            <span className="text-lg font-bold text-gray-800">Total:</span>
+            <span className="text-lg font-bold text-primary-DEFAULT">{formatCurrency(cartTotal)}</span>
           </div>
           <Link to="/checkout">
             <Button variant="primary" className="w-full">Proceed to Checkout</Button>

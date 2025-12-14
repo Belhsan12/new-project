@@ -36,9 +36,11 @@ function CheckoutPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="bg-white dark:bg-darkBg-card p-8 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl text-center">
-        <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Your Cart is Empty</h2>
-        <p className="text-gray-600 dark:text-darkText-subtle mb-6">Please add items to your cart before checking out.</p>
+      // Removed dark mode specific background and shadow classes
+      <div className="bg-white p-8 rounded-xl shadow-soft-xl text-center">
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-3xl font-bold mb-4 text-gray-800">Your Cart is Empty</h2>
+        <p className="text-gray-600 mb-6">Please add items to your cart before checking out.</p>
         <Link to="/products">
           <Button variant="primary">Start Shopping</Button>
         </Link>
@@ -47,12 +49,15 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl">
-      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-darkText-DEFAULT">Checkout</h1>
+    // Removed dark mode specific background and shadow classes
+    <div className="bg-white p-6 rounded-xl shadow-soft-xl">
+      {/* Adjusted text colors for light theme consistency */}
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">Checkout</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Shipping Form */}
         <div className="lg:col-span-2">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Shipping Details</h2>
+          {/* Adjusted text colors for light theme consistency */}
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">Shipping Details</h2>
           <form onSubmit={handlePlaceOrder} className="space-y-4">
             <Input
               label="Full Name"
@@ -110,19 +115,22 @@ function CheckoutPage() {
         </div>
 
         {/* Order Summary */}
-        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-fit">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Order Summary</h2>
+        <div className="lg:col-span-1 bg-gray-50 p-6 rounded-xl shadow-md border border-gray-100 h-fit">
+          {/* Adjusted text colors for light theme consistency */}
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">Order Summary</h2>
           <div className="space-y-2 mb-4">
             {cartItems.map(item => (
-              <div key={item.id} className="flex justify-between text-sm text-gray-700 dark:text-darkText-subtle">
+              // Adjusted text colors for light theme consistency
+              <div key={item.id} className="flex justify-between text-sm text-gray-700">
                 <span>{item.name} (x{item.quantity})</span>
                 <span>{formatCurrency(item.price * item.quantity)}</span>
               </div>
             ))}
           </div>
-          <div className="flex justify-between items-center py-2 border-t border-gray-200 dark:border-gray-700 mt-4">
-            <span className="text-lg font-bold text-gray-800 dark:text-darkText-DEFAULT">Total:</span>
-            <span className="text-lg font-bold text-primary-DEFAULT dark:text-primary-light">{formatCurrency(cartTotal)}</span>
+          <div className="flex justify-between items-center py-2 border-t border-gray-200 mt-4">
+            {/* Adjusted text colors for light theme consistency */}
+            <span className="text-lg font-bold text-gray-800">Total:</span>
+            <span className="text-lg font-bold text-primary-DEFAULT">{formatCurrency(cartTotal)}</span>
           </div>
         </div>
       </div>

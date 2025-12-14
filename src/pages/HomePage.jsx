@@ -23,7 +23,8 @@ function HomePage() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-DEFAULT to-primary-light dark:from-darkBg-darker dark:to-darkBg-DEFAULT text-primary-contrast py-20 px-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl overflow-hidden">
+      {/* Removed dark mode specific background and shadow classes */}
+      <section className="relative bg-gradient-to-r from-primary-DEFAULT to-primary-light text-primary-contrast py-20 px-6 rounded-xl shadow-soft-xl overflow-hidden">
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight text-white">
             Discover Your Next Favorite Product
@@ -50,7 +51,8 @@ function HomePage() {
 
       {/* Featured Products */}
       <section className="py-8">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-darkText-DEFAULT">
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
           Featured Products
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -67,7 +69,8 @@ function HomePage() {
 
       {/* Categories Section */}
       <section className="py-8">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-darkText-DEFAULT">
+        {/* Adjusted text colors for light theme consistency */}
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
           Shop by Category
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -75,12 +78,14 @@ function HomePage() {
             <Link
               key={category.slug}
               to={`/products?category=${category.slug}`}
-              className="block bg-white dark:bg-darkBg-card rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl hover:shadow-soft-hover dark:hover:shadow-dark-soft-hover transition-all duration-300 ease-in-out group hover:translate-y-[-4px] text-center py-8 px-4"
+              // Removed dark mode specific background and shadow classes
+              className="block bg-white rounded-xl shadow-soft-xl hover:shadow-soft-hover transition-all duration-300 ease-in-out group hover:translate-y-[-4px] text-center py-8 px-4"
             >
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-darkText-DEFAULT group-hover:text-primary-DEFAULT dark:group-hover:text-primary-light transition-colors duration-200">
+              {/* Adjusted text colors for light theme consistency */}
+              <h3 className="text-xl font-semibold text-gray-800 group-hover:text-primary-DEFAULT transition-colors duration-200">
                 {category.name}
               </h3>
-              <p className="text-gray-600 dark:text-darkText-subtle text-sm mt-2">Explore {category.name} collection</p>
+              <p className="text-gray-600 text-sm mt-2">Explore {category.name} collection</p>
             </Link>
           ))}
         </div>

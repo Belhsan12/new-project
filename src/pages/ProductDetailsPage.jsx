@@ -38,18 +38,21 @@ function ProductDetailsPage() {
   }, [product, quantity, addToCart, navigate]);
 
   if (loading) {
-    return <div className="text-center text-lg py-10 dark:text-darkText-DEFAULT">Loading product details...</div>;
+    // Adjusted text colors for light theme consistency
+    return <div className="text-center text-lg py-10">Loading product details...</div>;
   }
   if (error) {
     return <div className="text-center text-lg py-10 text-danger-DEFAULT">{error}</div>;
   }
 
   if (!product) {
-    return <div className="text-center text-lg py-10 dark:text-darkText-DEFAULT">Product data is missing.</div>;
+    // Adjusted text colors for light theme consistency
+    return <div className="text-center text-lg py-10">Product data is missing.</div>;
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl flex flex-col md:flex-row gap-8">
+    // Removed dark mode specific background and shadow classes
+    <div className="bg-white p-6 rounded-xl shadow-soft-xl flex flex-col md:flex-row gap-8">
       {/* Product Image */}
       <div className="md:w-1/2">
         <img
@@ -62,17 +65,19 @@ function ProductDetailsPage() {
       {/* Product Details */}
       <div className="md:w-1/2 flex flex-col justify-between">
         <div>
-          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-darkText-DEFAULT mb-2">{product.name}</h1>
-          <p className="text-2xl font-bold text-primary-DEFAULT dark:text-primary-light mb-4">{formatCurrency(product.price)}</p>
-          <p className="text-gray-700 dark:text-darkText-subtle leading-relaxed mb-6">{product.description}</p>
+          {/* Adjusted text colors for light theme consistency */}
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{product.name}</h1>
+          <p className="text-2xl font-bold text-primary-DEFAULT mb-4">{formatCurrency(product.price)}</p>
+          <p className="text-gray-700 leading-relaxed mb-6">{product.description}</p>
 
           <div className="flex items-center space-x-2 mb-6">
             <span className="text-yellow-500">{'⭐'.repeat(Math.round(product.rating))}</span>
-            <span className="text-gray-600 dark:text-darkText-subtle text-sm">({product.rating} / 5)</span>
+            <span className="text-gray-600 text-sm">({product.rating} / 5)</span>
           </div>
 
           <div className="flex items-center mb-6 space-x-4">
-            <label htmlFor="quantity-selector" className="text-gray-700 dark:text-darkText-DEFAULT font-medium">Quantity:</label>
+            {/* Adjusted label text color for light theme consistency */}
+            <label htmlFor="quantity-selector" className="text-gray-700 font-medium">Quantity:</label>
             <QuantitySelector
               id="quantity-selector"
               quantity={quantity}

@@ -15,12 +15,14 @@ import PropTypes from 'prop-types';
  * @param {string} [props.label] - Optional label for the input.
  */
 function Input({ type = 'text', placeholder = '', value, onChange, className = '', id, name, required = false, label, ...props }) {
-  const baseStyles = 'block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-primary-DEFAULT focus:border-primary-DEFAULT dark:bg-darkBg-card dark:text-darkText-DEFAULT dark:placeholder-gray-400';
+  // Removed dark mode specific styles for input and placeholder
+  const baseStyles = 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-DEFAULT focus:border-primary-DEFAULT bg-white text-gray-900 placeholder-gray-400';
 
   return (
     <div className="mb-4">
       {label && (
-        <label htmlFor={id || name} className="block text-sm font-medium text-gray-700 dark:text-darkText-DEFAULT mb-1">
+        // Adjusted label text color for light theme consistency
+        <label htmlFor={id || name} className="block text-sm font-medium text-gray-700 mb-1">
           {label}
           {required && <span className="text-danger-DEFAULT ml-1">*</span>}
         </label>

@@ -34,11 +34,13 @@ function QuantitySelector({ quantity, onQuantityChange, min = 1, max = 100, clas
   }, [min, max, onQuantityChange]);
 
   return (
-    <div className={`flex items-center border border-gray-300 dark:border-gray-600 rounded-md overflow-hidden ${className}`}>
+    // Removed dark mode specific border and background classes
+    <div className={`flex items-center border border-gray-300 rounded-md overflow-hidden ${className}`}>
       <button
         onClick={handleDecrease}
         disabled={quantity <= min}
-        className="p-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-gray-700 dark:text-darkText-DEFAULT"
+        // Adjusted background and text colors for light theme consistency
+        className="p-2 bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-gray-700"
         aria-label="Decrease quantity"
       >
         <Minus size={16} />
@@ -54,14 +56,16 @@ function QuantitySelector({ quantity, onQuantityChange, min = 1, max = 100, clas
         }}
         min={min}
         max={max}
-        className="w-12 text-center border-x border-gray-300 dark:border-gray-600 bg-white dark:bg-darkBg-card text-gray-900 dark:text-darkText-DEFAULT focus:outline-none focus:ring-primary-DEFAULT focus:border-primary-DEFAULT"
+        // Removed dark mode specific border, background and text colors
+        className="w-12 text-center border-x border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-primary-DEFAULT focus:border-primary-DEFAULT"
         aria-live="polite"
         readOnly={true} // For simplicity, make it read-only to prevent direct typing, only +/- buttons work
       />
       <button
         onClick={handleIncrease}
         disabled={quantity >= max}
-        className="p-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-gray-700 dark:text-darkText-DEFAULT"
+        // Adjusted background and text colors for light theme consistency
+        className="p-2 bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-gray-700"
         aria-label="Increase quantity"
       >
         <Plus size={16} />

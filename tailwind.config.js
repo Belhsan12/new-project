@@ -3,8 +3,8 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  // CRITICAL: Enable 'class' dark mode strategy for manual toggling
-  darkMode: 'class',
+  // CRITICAL: Dark mode strategy 'class' removed as per user request to use only light colors.
+  // darkMode: 'class', 
   theme: {
     extend: {
       colors: {
@@ -35,24 +35,24 @@ module.exports = {
           dark: '#38A169',
           contrast: '#FFFFFF',
         },
-        // Backgrounds for dark mode
-        darkBg: {
-          DEFAULT: '#1a1a1a', // Very dark gray, almost black
-          darker: '#0a0a0a',  // Even darker for contrast sections like footer
-          card: '#2a2a2a',    // For cards, slightly lighter than main background
-        },
-        // Text colors for dark mode (re-aligning default gray-100/gray-200)
-        darkText: {
-          DEFAULT: '#E2E8F0', // light gray for general text
-          subtle: '#A0AEC0',  // subtle gray for descriptions
-        },
+        // Removed darkBg and darkText definitions as dark mode is no longer supported.
+        // darkBg: {
+        //   DEFAULT: '#1a1a1a', // Very dark gray, almost black
+        //   darker: '#0a0a0a',  // Even darker for contrast sections like footer
+        //   card: '#2a2a2a',    // For cards, slightly lighter than main background
+        // },
+        // darkText: {
+        //   DEFAULT: '#E2E8F0', // light gray for general text
+        //   subtle: '#A0AEC0',  // subtle gray for descriptions
+        // },
       },
       // Custom shadows for a softer, elevated look
       boxShadow: {
         'soft-xl': '0 12px 30px rgba(0,0,0,0.15)',
         'soft-hover': '0 18px 45px rgba(0,0,0,0.25)',
-        'dark-soft-xl': '0 12px 30px rgba(0,0,0,0.4)',
-        'dark-soft-hover': '0 18px 45px rgba(0,0,0,0.6)',
+        // Removed dark mode specific shadows
+        // 'dark-soft-xl': '0 12px 30px rgba(0,0,0,0.4)',
+        // 'dark-soft-hover': '0 18px 45px rgba(0,0,0,0.6)',
       },
       // Adding some custom animations for a more dynamic feel
       keyframes: {

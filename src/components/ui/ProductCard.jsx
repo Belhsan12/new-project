@@ -16,7 +16,8 @@ function ProductCard({ product, onAddToCart }) {
   }, [onAddToCart, product]);
 
   return (
-    <div className="bg-white dark:bg-darkBg-card rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl hover:shadow-soft-hover dark:hover:shadow-dark-soft-hover transition-all duration-300 ease-in-out group hover:translate-y-[-4px] flex flex-col h-full">
+    // Removed dark mode specific background and shadow classes
+    <div className="bg-white rounded-xl shadow-soft-xl hover:shadow-soft-hover transition-all duration-300 ease-in-out group hover:translate-y-[-4px] flex flex-col h-full">
       <Link to={`/products/${product.id}`} className="block relative overflow-hidden">
         <img
           src={product.imageUrl}
@@ -26,15 +27,17 @@ function ProductCard({ product, onAddToCart }) {
       </Link>
       <div className="p-4 flex flex-col flex-grow">
         <Link to={`/products/${product.id}`}>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-darkText-DEFAULT hover:text-primary-DEFAULT dark:hover:text-primary-light transition-colors duration-200 line-clamp-2 min-h-[3rem]">
+          {/* Adjusted text colors for light theme consistency */}
+          <h3 className="text-lg font-semibold text-gray-800 hover:text-primary-DEFAULT transition-colors duration-200 line-clamp-2 min-h-[3rem]">
             {product.name}
           </h3>
         </Link>
-        <p className="text-gray-600 dark:text-darkText-subtle text-sm mt-1 flex-grow line-clamp-2 min-h-[2.5rem]">
+        <p className="text-gray-600 text-sm mt-1 flex-grow line-clamp-2 min-h-[2.5rem]">
           {product.description}
         </p>
         <div className="flex items-center justify-between mt-3">
-          <span className="text-xl font-bold text-primary-DEFAULT dark:text-primary-light">
+          {/* Adjusted text colors for light theme consistency */}
+          <span className="text-xl font-bold text-primary-DEFAULT">
             {formatCurrency(product.price)}
           </span>
           <Button onClick={handleAddToCart} size="sm" className="ml-2" disabled={product.stock === 0}>

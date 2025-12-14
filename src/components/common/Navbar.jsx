@@ -24,7 +24,8 @@ function Navbar() {
   }, [searchQuery]);
 
   return (
-    <nav className="bg-primary-DEFAULT dark:bg-darkBg-darker text-primary-contrast shadow-lg border-b border-primary-dark/20 dark:border-darkBg-DEFAULT/20 sticky top-0 z-50">
+    // Removed dark mode classes for navbar background and border
+    <nav className="bg-primary-DEFAULT text-primary-contrast shadow-lg border-b border-primary-dark/20 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-wide hover:text-primary-light transition-colors duration-200">
@@ -81,7 +82,8 @@ function Navbar() {
 
       {/* Mobile Menu Content */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-primary-dark dark:bg-darkBg-darker pb-4 shadow-lg">
+        // Removed dark mode classes for mobile menu background
+        <div className="md:hidden bg-primary-dark pb-4 shadow-lg">
           <div className="flex flex-col items-center space-y-4">
             <Link
               to="/products"
