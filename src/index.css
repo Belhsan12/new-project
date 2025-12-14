@@ -2,3 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Custom fade-in animation for better control */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in.fade-in {
+    animation: fade-in 0.7s ease-out forwards;
+  }
+  .animate-in.fade-in.delay-200 { animation-delay: 0.2s; }
+  .animate-in.fade-in.delay-400 { animation-delay: 0.4s; }
+
+  /* Custom bounce-fade for secondary buttons */
+  @keyframes bounce-fade {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-5px); opacity: 0.8; }
+  }
+  .animate-bounce-fade {
+    animation: bounce-fade 2s infinite ease-in-out;
+  }
+}
