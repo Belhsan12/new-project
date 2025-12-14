@@ -1,92 +1,107 @@
-import React, { createContext, useReducer, useContext, useCallback, useMemo } from 'react';
-import { calculateCartTotal } from '../utils/helpers';
+import React, { createContext, useReducer, useContext } from 'react';
 
-const CartContext = createContext();
+/**
+ * @typedef {Object} CartItem
+ * @property {string} id - Unique identifier for the item.
+ * @property {string} name - Name of the item.
+ * @property {number} price - Price of a single item.
+ * @property {number} quantity - Number of this item in the cart.
+ */
 
-const cartReducer = (state, action) => {
+/**
+ * @typedef {Object} CartState
+ * @property {CartItem[]} items - Array of items in the cart.
+ */
+
+/**
+ * @typedef {'ADD_ITEM' | 'REMOVE_ITEM' | 'UPDATE_QUANTITY' | 'CLEAR_CART'} CartActionType
+ */
+
+/**
+ * @typedef {Object} CartAction
+ * @property {CartActionType} type - The type of action to perform.
+ * @property {CartItem} [payload] - The item or item details for the action.
+ * @property {string} [payload.id] - The ID of the item for remove/update actions.
+ * @property {number} [payload.quantity] - The new quantity for update action.
+ */
+
+/** @type {CartState} */
+const initialState = {
+  items: [],
+};
+
+/**
+ * Reducer function for managing cart state.
+ * @param {CartState} state - The current cart state.
+ * @param {CartAction} action - The action to be dispatched.
+ * @returns {CartState} The new cart state.
+ */
+function cartReducer(state, action) {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case 'ADD_ITEM':
       {
-        const { product, quantity } = action.payload;
-        const existingItemIndex = state.items.findIndex(item => item.id === product.id);
-
+        const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
         if (existingItemIndex > -1) {
-          // Item exists, update quantity
-          const updatedItems = state.items.map((item, index) =>
-            index === existingItemIndex
-              ? { ...item, quantity: item.quantity + quantity }
-              : item
-          );
+          const updatedItems = [...state.items];
+          const existingItem = updatedItems[existingItemIndex];
+          updatedItems[existingItemIndex] = {
+            ...existingItem,
+            quantity: existingItem.quantity + action.payload.quantity,
+          };
           return { ...state, items: updatedItems };
         } else {
-          // New item, add to cart
-          return { ...state, items: [...state.items, { ...product, quantity }] };
+          return { ...state, items: [...state.items, action.payload] };
         }
       }
-    case 'REMOVE_FROM_CART':
-      {
-        return { ...state, items: state.items.filter(item => item.id !== action.payload.id) };
-      }
+    case 'REMOVE_ITEM':
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload.id),
+      };
     case 'UPDATE_QUANTITY':
-      {
-        const { id, quantity } = action.payload;
-        const updatedItems = state.items.map(item =>
-          item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-        );
-        return { ...state, items: updatedItems };
-      }
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === action.payload.id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        ),
+      };
     case 'CLEAR_CART':
       return { ...state, items: [] };
     default:
       return state;
   }
-};
+}
 
-export const CartProvider = ({ children }) => {
-  const [cartState, dispatch] = useReducer(cartReducer, { items: [] });
+/** @type {React.Context<{ state: CartState, dispatch: React.Dispatch<CartAction> } | undefined>} */
+const CartContext = createContext(undefined);
 
-  // Memoize cart total calculation to prevent unnecessary re-calculations
-  const cartTotal = useMemo(() => calculateCartTotal(cartState.items), [cartState.items]);
-
-  // Memoized actions for referential stability
-  const addToCart = useCallback((product, quantity = 1) => {
-    if (quantity > 0) {
-      dispatch({ type: 'ADD_TO_CART', payload: { product, quantity } });
-    }
-  }, []);
-
-  const removeFromCart = useCallback((id) => {
-    dispatch({ type: 'REMOVE_FROM_CART', payload: { id } });
-  }, []);
-
-  const updateQuantity = useCallback((id, quantity) => {
-    dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity } });
-  }, []);
-
-  const clearCart = useCallback(() => {
-    dispatch({ type: 'CLEAR_CART' });
-  }, []);
-
-  const value = useMemo(() => ({
-    cartItems: cartState.items,
-    cartTotal,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-  }), [cartState.items, cartTotal, addToCart, removeFromCart, updateQuantity, clearCart]);
+/**
+ * CartProvider component to wrap the application and provide cart state.
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - Child components to be rendered within the provider.
+ * @returns {JSX.Element} The CartProvider component.
+ */
+export function CartProvider({ children }) {
+  const [state, dispatch] = useReducer(cartReducer, initialState);
 
   return (
-    <CartContext.Provider value={value}>
+    <CartContext.Provider value={{ state, dispatch }}>
       {children}
     </CartContext.Provider>
   );
-};
+}
 
-export const useCart = () => {
+/**
+ * Custom hook to use the cart context.
+ * @returns {{ state: CartState, dispatch: React.Dispatch<CartAction> }}
+ * @throws {Error} If used outside of a CartProvider.
+ */
+export function useCart() {
   const context = useContext(CartContext);
   if (context === undefined) {
     throw new Error('useCart must be used within a CartProvider');
   }
   return context;
-};
+}

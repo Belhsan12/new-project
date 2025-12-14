@@ -1,33 +1,18 @@
-import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/common/Navbar';
-import Footer from './components/common/Footer';
-
-// Lazy load page components for better performance
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ProductListingPage = lazy(() => import('./pages/ProductListingPage'));
-const ProductDetailsPage = lazy(() => import('./pages/ProductDetailsPage'));
-const CartPage = lazy(() => import('./pages/CartPage'));
-const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+import Header from './components/Header';
+import WelcomePage from './pages/WelcomePage';
 
 function App() {
   return (
     // Removed dark mode classes to enforce a light theme throughout the application
     <div className="min-h-screen flex flex-col bg-gray-100 text-gray-900">
-      <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <Suspense fallback={<div className="text-center text-lg font-semibold py-10">Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<ProductListingPage />} />
-            <Route path="/products/:id" element={<ProductDetailsPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="*" element={<div className="text-center text-xl font-bold py-20">404 - Page Not Found</div>} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
+      <Header />
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        {/* Future routes can be added here */}
+        {/* <Route path="/courses" element={<CoursesPage />} /> */}
+        {/* <Route path="/cart" element={<CartPage />} /> */}
+      </Routes>
     </div>
   );
 }
