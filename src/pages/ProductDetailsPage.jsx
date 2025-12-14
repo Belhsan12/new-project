@@ -49,7 +49,7 @@ function ProductDetailsPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-lg shadow-lg flex flex-col md:flex-row gap-8">
+    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl flex flex-col md:flex-row gap-8">
       {/* Product Image */}
       <div className="md:w-1/2">
         <img

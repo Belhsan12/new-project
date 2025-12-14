@@ -16,12 +16,12 @@ function ProductCard({ product, onAddToCart }) {
   }, [onAddToCart, product]);
 
   return (
-    <div className="bg-white dark:bg-darkBg-card rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col h-full">
-      <Link to={`/products/${product.id}`} className="block relative overflow-hidden group">
+    <div className="bg-white dark:bg-darkBg-card rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl hover:shadow-soft-hover dark:hover:shadow-dark-soft-hover transition-all duration-300 ease-in-out group hover:translate-y-[-4px] flex flex-col h-full">
+      <Link to={`/products/${product.id}`} className="block relative overflow-hidden">
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-48 object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-48 object-cover object-center transition-transform duration-300 group-hover:scale-105"
         />
       </Link>
       <div className="p-4 flex flex-col flex-grow">

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 /**
  * A customizable button component.
  * @param {object} props - Component props.
- * @param {string} [props.variant='primary'] - The style variant of the button ('primary', 'secondary', 'danger', 'outline').
+ * @param {string} [props.variant='primary'] - The style variant of the button ('primary', 'secondary', 'danger', 'outline', 'ghost').
  * @param {string} [props.size='md'] - The size of the button ('sm', 'md', 'lg').
  * @param {string} [props.className=''] - Additional Tailwind CSS classes to apply.
  * @param {boolean} [props.disabled=false] - If true, the button will be disabled.
@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
  * @param {string} [props.type='button'] - The type of the button ('button', 'submit', 'reset').
  */
 function Button({ variant = 'primary', size = 'md', className = '', disabled = false, children, onClick, type = 'button', ...props }) {
-  const baseStyles = 'font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-darkBg-DEFAULT';
+  const baseStyles = 'font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-darkBg-DEFAULT';
 
   const variantStyles = {
     primary: 'bg-primary-DEFAULT text-primary-contrast hover:bg-primary-dark focus:ring-primary-DEFAULT',

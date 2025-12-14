@@ -47,6 +47,13 @@ module.exports = {
           subtle: '#A0AEC0',  // subtle gray for descriptions
         },
       },
+      // Custom shadows for a softer, elevated look
+      boxShadow: {
+        'soft-xl': '0 12px 30px rgba(0,0,0,0.15)',
+        'soft-hover': '0 18px 45px rgba(0,0,0,0.25)',
+        'dark-soft-xl': '0 12px 30px rgba(0,0,0,0.4)',
+        'dark-soft-hover': '0 18px 45px rgba(0,0,0,0.6)',
+      },
       // Adding some custom animations for a more dynamic feel
       keyframes: {
         glow: {

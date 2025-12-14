@@ -36,7 +36,7 @@ function CheckoutPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="bg-white dark:bg-darkBg-card p-8 rounded-lg shadow-lg text-center">
+      <div className="bg-white dark:bg-darkBg-card p-8 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl text-center">
         <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Your Cart is Empty</h2>
         <p className="text-gray-600 dark:text-darkText-subtle mb-6">Please add items to your cart before checking out.</p>
         <Link to="/products">
@@ -47,7 +47,7 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-lg shadow-lg">
+    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl">
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-darkText-DEFAULT">Checkout</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Shipping Form */}
@@ -110,7 +110,7 @@ function CheckoutPage() {
         </div>
 
         {/* Order Summary */}
-        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 h-fit">
+        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-fit">
           <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Order Summary</h2>
           <div className="space-y-2 mb-4">
             {cartItems.map(item => (

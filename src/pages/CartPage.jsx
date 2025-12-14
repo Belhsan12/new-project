@@ -19,7 +19,7 @@ function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="bg-white dark:bg-darkBg-card p-8 rounded-lg shadow-lg text-center">
+      <div className="bg-white dark:bg-darkBg-card p-8 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl text-center">
         <h2 className="text-3xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Your Cart is Empty</h2>
         <p className="text-gray-600 dark:text-darkText-subtle mb-6">Looks like you haven't added anything to your cart yet.</p>
         <Link to="/products">
@@ -30,13 +30,13 @@ function CartPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-darkBg-card p-6 rounded-lg shadow-lg">
+    <div className="bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-soft-xl dark:shadow-dark-soft-xl">
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-darkText-DEFAULT">Your Shopping Cart</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items List */}
         <div className="lg:col-span-2 space-y-4">
           {cartItems.map(item => (
-            <div key={item.id} className="flex flex-col sm:flex-row items-center bg-gray-50 dark:bg-darkBg-DEFAULT p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={item.id} className="flex flex-col sm:flex-row items-center bg-gray-50 dark:bg-darkBg-DEFAULT p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-[1.01] border border-gray-100 dark:border-gray-700">
               <Link to={`/products/${item.id}`} className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 overflow-hidden rounded-md mr-4">
                 <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
               </Link>
@@ -71,7 +71,7 @@ function CartPage() {
         </div>
 
         {/* Order Summary */}
-        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 h-fit">
+        <div className="lg:col-span-1 bg-gray-50 dark:bg-darkBg-DEFAULT p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-fit">
           <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-darkText-DEFAULT">Order Summary</h2>
           <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700">
             <span className="text-gray-700 dark:text-darkText-DEFAULT">Subtotal:</span>

@@ -87,7 +87,7 @@ function ProductListingPage() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
       {/* Filters and Sorting Sidebar */}
-      <aside className="md:col-span-1 bg-white dark:bg-darkBg-card p-6 rounded-lg shadow-md h-fit sticky top-24">
+      <aside className="md:col-span-1 bg-white dark:bg-darkBg-card p-6 rounded-xl shadow-md h-fit sticky top-24">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-darkText-DEFAULT">Filters</h2>
 
         {/* Category Filter */}
